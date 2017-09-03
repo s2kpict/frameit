@@ -33,4 +33,14 @@ dependencies {
     compile 'uk.co.chrisjenx:calligraphy:2.3.0'
     compile 'com.android.support:support-v4:26.+'
     testCompile 'junit:junit:4.12'
+
+    //Firebase SDK's
+    compile 'com.google.firebase:firebase-auth:11.2.0'
+    compile 'com.google.firebase:firebase-database:11.2.0'
+    compile 'com.google.firebase:firebase-storage:11.2.0'
+
 }
+
+
+// ADD THIS AT THE BOTTOM
+apply plugin: 'com.google.gms.google-services'
