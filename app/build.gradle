@@ -36,6 +36,18 @@ dependencies {
     compile 'com.google.firebase:firebase-database:11.2.0'
     compile 'com.google.firebase:firebase-storage:11.2.0'
     compile 'com.google.android.gms:play-services-auth:11.2.0'
+
+    //For Circular ImageView
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+
+    //For Like Button and All
+    compile 'com.github.jd-alexander:LikeButton:0.2.2'
+
+    //For Corousel View
+    compile 'com.synnapps:carouselview:0.1.4'
+
+    //For facebook Login Solution
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
 }
 
 // ADD THIS AT THE BOTTOM

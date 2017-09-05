@@ -32,7 +32,13 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+
+
+import pict.s2k.frameit.ImageManipulation;
 import pict.s2k.frameit.R;
+import pict.s2k.frameit.users.UserModel;
 
 public class ExampleGoogleLoginActivity extends AppCompatActivity implements  GoogleApiClient.OnConnectionFailedListener {
 
@@ -154,7 +160,7 @@ public class ExampleGoogleLoginActivity extends AppCompatActivity implements  Go
     private void updateUI(FirebaseUser currentUser) {
     }
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+    private void firebaseAuthWithGoogle(final GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
@@ -166,6 +172,17 @@ public class ExampleGoogleLoginActivity extends AppCompatActivity implements  Go
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            AuthResult authResult = task.getResult() ;
+                            FirebaseUser firebaseUser = authResult.getUser() ;
+
+                            UserModel.BasicPersonalInformation basicPersonalInformation = new UserModel.BasicPersonalInformation(Long.parseLong(firebaseUser.getPhoneNumber(),10)) ;   ;
+                            UserModel.Photo photo = new UserModel.Photo(ImageManipulation.storeAndGetThumbnail(firebaseUser.getPhotoUrl())) ;
+
+                            AuthenticationBaseCode.createAFreshNewAccount(firebaseUser.getUid(),basicPersonalInformation,photo);
+
+                            Toast.makeText(ExampleGoogleLoginActivity.this, "Created A new Acconunt", Toast.LENGTH_LONG).show() ;
+
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -189,6 +206,7 @@ public class ExampleGoogleLoginActivity extends AppCompatActivity implements  Go
                     }
                 });
     }
+
 
 
 
