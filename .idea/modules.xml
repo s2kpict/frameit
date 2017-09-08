@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FrameIt Project.iml" filepath="$PROJECT_DIR$/FrameIt Project.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/frameit.iml" filepath="$PROJECT_DIR$/frameit.iml" />
     </modules>
   </component>
 </project>
